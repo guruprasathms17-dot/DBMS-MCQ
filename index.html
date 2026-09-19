@@ -1,673 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NPTEL DBMS – 100 Previous Year Style MCQs with Answers</title>
-<style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-        font-family: 'Segoe UI', system-ui, sans-serif;
-        line-height: 1.6;
-        background: #f0f4f8;
-        color: #1a202c;
-        padding: 20px;
-    }
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        overflow: hidden;
-    }
-    header {
-        background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-        color: white;
-        padding: 30px 25px;
-        text-align: center;
-    }
-    header h1 { font-size: 1.8rem; margin-bottom: 8px; }
-    header p { opacity: 0.9; font-size: 0.95rem; }
-    .controls {
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-        padding: 20px;
-        background: #f8fafc;
-        border-bottom: 1px solid #e2e8f0;
-        flex-wrap: wrap;
-    }
-    button {
-        background: #3b82f6;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: background 0.2s;
-    }
-    button:hover { background: #2563eb; }
-    button.secondary { background: #64748b; }
-    button.secondary:hover { background: #475569; }
-    .question {
-        padding: 22px 25px;
-        border-bottom: 1px solid #e2e8f0;
-    }
-    .question:last-child { border-bottom: none; }
-    .q-num {
-        display: inline-block;
-        background: #3b82f6;
-        color: white;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 32px;
-        font-weight: 600;
-        margin-right: 12px;
-        font-size: 0.9rem;
-    }
-    .q-text { font-weight: 600; margin-bottom: 14px; display: inline; }
-    .options { margin-left: 44px; }
-    .option {
-        margin: 8px 0;
-        padding: 8px 12px;
-        border-radius: 6px;
-        background: #f8fafc;
-    }
-    .answer {
-        margin: 12px 0 0 44px;
-        padding: 10px 14px;
-        background: #ecfdf5;
-        border-left: 4px solid #10b981;
-        border-radius: 0 6px 6px 0;
-        display: none;
-        font-weight: 500;
-        color: #065f46;
-    }
-    .answer.show { display: block; }
-    footer {
-        text-align: center;
-        padding: 20px;
-        background: #f1f5f9;
-        font-size: 0.85rem;
-        color: #64748b;
-    }
-    @media print {
-        .controls { display: none; }
-        .answer { display: block !important; }
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Interactive practice platform for NPTEL Database Management System (DBMS) 100 Previous Year MCQs with answers, explanations, and score tracking. Course by IIT Kharagpur.">
+    <meta name="keywords"
+        content="NPTEL, DBMS, Database Management System, MCQs, IIT Kharagpur, Relational Algebra, SQL, Normalization, Indexing, Transactions">
+    <meta name="author" content="NPTEL DBMS Prep Hub">
+
+    <title>NPTEL DBMS – 100 Previous Year Style MCQs & Interactive Practice Hub</title>
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗄️</text></svg>">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
-    <header>
-        <h1>NPTEL Database Management System</h1>
-        <p>100 Previous Year Style MCQs with Answers<br>
-        (IIT Kharagpur – Prof. Partha Pratim Das & Prof. Samiran Chattopadhyay)</p>
-    </header>
 
-    <div class="controls">
-        <button onclick="showAllAnswers()">Show All Answers</button>
-        <button class="secondary" onclick="hideAllAnswers()">Hide All Answers</button>
-        <button class="secondary" onclick="window.print()">Print</button>
+    <!-- Real-time Progress Bar -->
+    <div class="progress-bar-container" aria-hidden="true">
+        <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+            aria-valuemax="100"></div>
     </div>
 
-    <div id="questions">
-        <!-- Questions will be inserted here -->
+    <!-- Main Application Area -->
+    <div class="app-container">
+
+        <!-- Hero Header -->
+        <header class="hero-header">
+            <div class="top-bar">
+                <div class="brand-badge">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 14l9-5-9-5-9 5 9 5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                    </svg>
+                    NPTEL Prep Hub
+                </div>
+
+                <button class="icon-btn" id="themeToggle" title="Toggle Theme" aria-label="Switch Theme">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">Database Management System</h1>
+                <p class="hero-subtitle">
+                    100 Previous Year Style MCQs with Interactive Practice & Answers<br>
+                    <strong>IIT Kharagpur</strong> – Prof. Partha Pratim Das & Prof. Samiran Chattopadhyay
+                </p>
+
+                <!-- Live Metrics Summary -->
+                <div class="stats-bar" aria-label="Quiz statistics">
+                    <div class="stat-item">
+                        <span class="stat-value" id="statTotal">100</span>
+                        <span class="stat-label">Total Questions</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statAnswered">0</span>
+                        <span class="stat-label">Answered</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statCorrect">0</span>
+                        <span class="stat-label">Correct</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statScore">0%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="statBookmarked">0</span>
+                        <span class="stat-label">Bookmarked</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Controls & Filters -->
+        <section class="control-section" aria-label="Filter and Search Controls">
+
+            <!-- Live Search Bar -->
+            <div class="search-box">
+                <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="Search MCQs by keyword (e.g., BCNF, SQL, RAID, ACID, Indexing)..."
+                    aria-label="Search questions">
+                <button class="clear-btn" id="clearSearchBtn" title="Clear Search" aria-label="Clear search">✕</button>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="category-scroll" id="categoryFilters" role="tablist" aria-label="Question Categories">
+                <!-- Dynamically populated via script.js -->
+            </div>
+
+            <!-- Action Toolbar -->
+            <div class="action-toolbar">
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="showAllAnswers()">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        Show All Answers
+                    </button>
+                    <button class="btn btn-secondary" onclick="hideAllAnswers()">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858-5.908a8.962 8.962 0 014.122-.963c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21M3 3l18 18" />
+                        </svg>
+                        Hide All Answers
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.print()">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                        </svg>
+                        Print / Export PDF
+                    </button>
+                </div>
+                <button class="btn-danger-link" onclick="resetProgress()">Reset Progress</button>
+            </div>
+
+        </section>
+
+        <!-- Dynamic Questions List Container -->
+        <main id="questions" class="questions-list" aria-label="Questions list">
+            <!-- Questions rendered via script.js -->
+        </main>
+
     </div>
 
+    <!-- Floating Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to Top" aria-label="Back to top of page">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- Footer -->
     <footer>
-        Compiled for NPTEL DBMS course practice • Covers ER, Relational Algebra, SQL, Normalization, Indexing, Transactions, Concurrency & Recovery
+        <p>Compiled for NPTEL DBMS Course Practice • IIT Kharagpur</p>
+        <p>Covers ER Diagrams, Relational Algebra, SQL, Normalization, Indexing & Hashing, Transactions, Concurrency &
+            Recovery, Storage & RAID</p>
     </footer>
-</div>
 
-<script>
-const questions = [
-    {
-        q: "Which of the following is NOT an advantage of using a DBMS over a traditional file system?",
-        options: ["Reduced data redundancy", "Improved data security", "Data independence", "Increased data inconsistency"],
-        ans: "d) Increased data inconsistency"
-    },
-    {
-        q: "The physical level of data abstraction describes:",
-        options: ["How data is actually stored", "What data is stored", "User views of the data", "Relationships among data"],
-        ans: "a) How data is actually stored"
-    },
-    {
-        q: "Logical data independence means:",
-        options: ["Changing the physical schema without changing the logical schema", "Changing the logical schema without changing application programs", "Changing application programs without changing the schema", "None of the above"],
-        ans: "b) Changing the logical schema without changing application programs"
-    },
-    {
-        q: "In an ER diagram, a double rectangle represents:",
-        options: ["Strong entity", "Weak entity", "Relationship", "Attribute"],
-        ans: "b) Weak entity"
-    },
-    {
-        q: "Total participation of an entity in a relationship is represented by:",
-        options: ["Single line", "Double line", "Dashed line", "Arrow"],
-        ans: "b) Double line"
-    },
-    {
-        q: "A super key is:",
-        options: ["A minimal set of attributes that uniquely identifies a tuple", "A set of attributes that uniquely identifies a tuple", "Always a primary key", "Always a candidate key"],
-        ans: "b) A set of attributes that uniquely identifies a tuple"
-    },
-    {
-        q: "A candidate key is:",
-        options: ["Any super key", "A minimal super key", "Always the primary key", "A foreign key"],
-        ans: "b) A minimal super key"
-    },
-    {
-        q: "Which of the following is true about a primary key?",
-        options: ["It can contain NULL values", "It must be unique and non-null", "There can be multiple primary keys in a relation", "It is always a single attribute"],
-        ans: "b) It must be unique and non-null"
-    },
-    {
-        q: "The degree of a relationship in ER model refers to:",
-        options: ["Number of entities participating", "Number of attributes", "Cardinality", "Number of relationships"],
-        ans: "a) Number of entities participating"
-    },
-    {
-        q: "In relational algebra, the selection operator (σ) is used for:",
-        options: ["Selecting columns", "Selecting rows based on a condition", "Joining tables", "Projecting attributes"],
-        ans: "b) Selecting rows based on a condition"
-    },
-    {
-        q: "The projection operator (π) in relational algebra:",
-        options: ["Selects rows", "Selects columns and eliminates duplicates", "Performs Cartesian product", "Performs union"],
-        ans: "b) Selects columns and eliminates duplicates"
-    },
-    {
-        q: "Which relational algebra operation is not a binary operation?",
-        options: ["Union", "Intersection", "Selection", "Join"],
-        ans: "c) Selection"
-    },
-    {
-        q: "The Cartesian product of two relations R (degree m) and S (degree n) will have degree:",
-        options: ["m + n", "m × n", "max(m,n)", "min(m,n)"],
-        ans: "a) m + n"
-    },
-    {
-        q: "Natural join is equivalent to:",
-        options: ["Cartesian product followed by selection on common attributes", "Cartesian product only", "Union of two relations", "Intersection of two relations"],
-        ans: "a) Cartesian product followed by selection on common attributes"
-    },
-    {
-        q: "Which of the following is a procedural query language?",
-        options: ["Relational Calculus", "SQL", "Relational Algebra", "QBE"],
-        ans: "c) Relational Algebra"
-    },
-    {
-        q: "Tuple relational calculus is a:",
-        options: ["Procedural language", "Non-procedural language", "Both", "None"],
-        ans: "b) Non-procedural language"
-    },
-    {
-        q: "In SQL, which command is used to remove a table completely?",
-        options: ["DELETE", "TRUNCATE", "DROP", "REMOVE"],
-        ans: "c) DROP"
-    },
-    {
-        q: "The SQL command to remove all rows from a table but keep the structure is:",
-        options: ["DELETE", "TRUNCATE", "DROP", "ALTER"],
-        ans: "b) TRUNCATE"
-    },
-    {
-        q: "Which of the following is a DDL command?",
-        options: ["SELECT", "INSERT", "CREATE", "UPDATE"],
-        ans: "c) CREATE"
-    },
-    {
-        q: "Which of the following is a DML command?",
-        options: ["CREATE", "ALTER", "INSERT", "DROP"],
-        ans: "c) INSERT"
-    },
-    {
-        q: "The result of a SELECT statement is:",
-        options: ["Always a single value", "A relation (table)", "Always sorted", "Always unique rows"],
-        ans: "b) A relation (table)"
-    },
-    {
-        q: "Which clause is used to filter groups in SQL?",
-        options: ["WHERE", "HAVING", "GROUP BY", "ORDER BY"],
-        ans: "b) HAVING"
-    },
-    {
-        q: "The GROUP BY clause is used with:",
-        options: ["Aggregate functions", "JOIN only", "ORDER BY only", "WHERE only"],
-        ans: "a) Aggregate functions"
-    },
-    {
-        q: "Which aggregate function ignores NULL values?",
-        options: ["COUNT(*)", "COUNT(column)", "Both COUNT(*) and COUNT(column)", "Neither"],
-        ans: "b) COUNT(column)"
-    },
-    {
-        q: "A foreign key can:",
-        options: ["Be NULL", "Never be NULL", "Only reference a primary key of the same table", "Be composite only"],
-        ans: "a) Be NULL"
-    },
-    {
-        q: "Referential integrity is enforced by:",
-        options: ["Primary key", "Foreign key", "Unique key", "Check constraint"],
-        ans: "b) Foreign key"
-    },
-    {
-        q: "A functional dependency X → Y is trivial if:",
-        options: ["Y is a subset of X", "X is a subset of Y", "X and Y are disjoint", "X and Y have the same number of attributes"],
-        ans: "a) Y is a subset of X"
-    },
-    {
-        q: "Armstrong’s axioms are used for:",
-        options: ["Finding candidate keys", "Inferring all functional dependencies", "Normalization only", "Query optimization"],
-        ans: "b) Inferring all functional dependencies"
-    },
-    {
-        q: "A relation is in 1NF if:",
-        options: ["It has no partial dependency", "It has atomic values", "It has no transitive dependency", "Every determinant is a candidate key"],
-        ans: "b) It has atomic values"
-    },
-    {
-        q: "A relation is in 2NF if:",
-        options: ["It is in 1NF and has no partial dependency", "It is in 1NF and has no transitive dependency", "Every determinant is a candidate key", "It has no multi-valued dependency"],
-        ans: "a) It is in 1NF and has no partial dependency"
-    },
-    {
-        q: "A relation is in 3NF if:",
-        options: ["It is in 2NF and has no transitive dependency", "It is in 2NF and every determinant is a candidate key", "It is in BCNF", "It has no partial dependency only"],
-        ans: "a) It is in 2NF and has no transitive dependency"
-    },
-    {
-        q: "A relation is in BCNF if:",
-        options: ["It is in 3NF", "Every determinant is a candidate key", "It has no multi-valued dependency", "It is in 4NF"],
-        ans: "b) Every determinant is a candidate key"
-    },
-    {
-        q: "Which normal form deals with multi-valued dependencies?",
-        options: ["3NF", "BCNF", "4NF", "5NF"],
-        ans: "c) 4NF"
-    },
-    {
-        q: "Lossless join decomposition means:",
-        options: ["The original relation can be reconstructed by joining the decomposed relations", "There is no information loss", "Both a and b", "None"],
-        ans: "c) Both a and b"
-    },
-    {
-        q: "Dependency preservation means:",
-        options: ["All functional dependencies are preserved in the decomposed relations", "The join is lossless", "Both", "None"],
-        ans: "a) All functional dependencies are preserved in the decomposed relations"
-    },
-    {
-        q: "In a B+ tree, data pointers are present in:",
-        options: ["Only leaf nodes", "Only non-leaf nodes", "Both leaf and non-leaf nodes", "Root only"],
-        ans: "a) Only leaf nodes"
-    },
-    {
-        q: "The order of a B+ tree is defined as the:",
-        options: ["Maximum number of children a non-leaf node can have", "Minimum number of children", "Number of levels", "Number of keys in root"],
-        ans: "a) Maximum number of children a non-leaf node can have"
-    },
-    {
-        q: "A clustered index:",
-        options: ["Determines the physical order of data", "Is always secondary", "Can be many per table", "Does not affect data order"],
-        ans: "a) Determines the physical order of data"
-    },
-    {
-        q: "A secondary index:",
-        options: ["Is built on the primary key", "Does not determine physical order of data", "Is always unique", "Is the same as clustered index"],
-        ans: "b) Does not determine physical order of data"
-    },
-    {
-        q: "In hashing, collision resolution using linked lists is called:",
-        options: ["Open addressing", "Chaining", "Linear probing", "Quadratic probing"],
-        ans: "b) Chaining"
-    },
-    {
-        q: "Linear probing is a form of:",
-        options: ["Chaining", "Open addressing", "Rehashing", "None"],
-        ans: "b) Open addressing"
-    },
-    {
-        q: "ACID properties of a transaction stand for:",
-        options: ["Atomicity, Consistency, Isolation, Durability", "Atomicity, Concurrency, Isolation, Durability", "Accuracy, Consistency, Isolation, Durability", "Atomicity, Consistency, Integrity, Durability"],
-        ans: "a) Atomicity, Consistency, Isolation, Durability"
-    },
-    {
-        q: "Atomicity means:",
-        options: ["All or nothing", "Consistency of database", "Isolation of transactions", "Durability of changes"],
-        ans: "a) All or nothing"
-    },
-    {
-        q: "Isolation means:",
-        options: ["Transactions are executed one after another", "Concurrent transactions do not interfere with each other", "Changes are permanent", "Database remains consistent"],
-        ans: "b) Concurrent transactions do not interfere with each other"
-    },
-    {
-        q: "A schedule is conflict serializable if:",
-        options: ["Its conflict graph is acyclic", "Its conflict graph is cyclic", "It is view serializable", "It is recoverable"],
-        ans: "a) Its conflict graph is acyclic"
-    },
-    {
-        q: "Two phase locking protocol ensures:",
-        options: ["Conflict serializability", "View serializability", "Recoverability", "All of the above"],
-        ans: "a) Conflict serializability"
-    },
-    {
-        q: "In two phase locking, the growing phase is when:",
-        options: ["Locks are acquired", "Locks are released", "Both", "None"],
-        ans: "a) Locks are acquired"
-    },
-    {
-        q: "A cascade-less schedule is one where:",
-        options: ["A transaction does not read a value written by an uncommitted transaction", "No dirty reads occur", "Both a and b", "None"],
-        ans: "c) Both a and b"
-    },
-    {
-        q: "Strict two phase locking requires that:",
-        options: ["All locks are held till commit", "Locks are released as soon as possible", "Only shared locks are used", "None"],
-        ans: "a) All locks are held till commit"
-    },
-    {
-        q: "Deadlock can be handled by:",
-        options: ["Prevention", "Detection and recovery", "Both", "None"],
-        ans: "c) Both"
-    },
-    {
-        q: "Wait-die and wound-wait are schemes for:",
-        options: ["Deadlock prevention", "Deadlock detection", "Locking", "Timestamp ordering"],
-        ans: "a) Deadlock prevention"
-    },
-    {
-        q: "In timestamp ordering protocol, a transaction is allowed to write if:",
-        options: ["Its timestamp is greater than the read and write timestamps of the data item", "Its timestamp is smaller", "Always", "Never"],
-        ans: "a) Its timestamp is greater than the read and write timestamps of the data item"
-    },
-    {
-        q: "Log-based recovery uses:",
-        options: ["Undo and redo operations", "Only undo", "Only redo", "Shadow paging"],
-        ans: "a) Undo and redo operations"
-    },
-    {
-        q: "In deferred update (NO-UNDO/REDO), during recovery we need:",
-        options: ["Only REDO", "Only UNDO", "Both", "Neither"],
-        ans: "a) Only REDO"
-    },
-    {
-        q: "Immediate update (UNDO/REDO) requires:",
-        options: ["Both UNDO and REDO", "Only UNDO", "Only REDO", "None"],
-        ans: "a) Both UNDO and REDO"
-    },
-    {
-        q: "Shadow paging is a recovery technique that:",
-        options: ["Does not require UNDO or REDO", "Requires both", "Uses logs", "Is based on timestamps"],
-        ans: "a) Does not require UNDO or REDO"
-    },
-    {
-        q: "The purpose of a checkpoint is:",
-        options: ["To reduce recovery time", "To increase concurrency", "To prevent deadlocks", "None"],
-        ans: "a) To reduce recovery time"
-    },
-    {
-        q: "Query optimization aims to:",
-        options: ["Find the most efficient execution plan", "Rewrite the query", "Both", "None"],
-        ans: "c) Both"
-    },
-    {
-        q: "In cost-based optimization, the cost is measured mainly in terms of:",
-        options: ["Number of disk I/Os", "CPU time only", "Network cost only", "Number of joins only"],
-        ans: "a) Number of disk I/Os"
-    },
-    {
-        q: "Which of the following is a heuristic for query optimization?",
-        options: ["Perform selection as early as possible", "Perform projection as late as possible", "Avoid joins", "Always use Cartesian product"],
-        ans: "a) Perform selection as early as possible"
-    },
-    {
-        q: "A view in SQL is:",
-        options: ["A virtual table", "A physical table", "Always updatable", "Stored with data"],
-        ans: "a) A virtual table"
-    },
-    {
-        q: "Which of the following can make a view non-updatable?",
-        options: ["Presence of DISTINCT", "Aggregate functions", "Joins of multiple tables", "All of the above"],
-        ans: "d) All of the above"
-    },
-    {
-        q: "The command to create a view is:",
-        options: ["CREATE VIEW", "CREATE TABLE AS", "DEFINE VIEW", "MAKE VIEW"],
-        ans: "a) CREATE VIEW"
-    },
-    {
-        q: "In ER model, a multi-valued attribute is represented by:",
-        options: ["Double oval", "Single oval", "Dashed oval", "Rectangle"],
-        ans: "a) Double oval"
-    },
-    {
-        q: "A composite attribute is represented by:",
-        options: ["Oval connected to other ovals", "Double oval", "Dashed oval", "Diamond"],
-        ans: "a) Oval connected to other ovals"
-    },
-    {
-        q: "The cardinality ratio of a relationship indicates:",
-        options: ["Number of entities participating", "How many instances of one entity relate to another", "Number of attributes", "Degree of relationship"],
-        ans: "b) How many instances of one entity relate to another"
-    },
-    {
-        q: "In a one-to-many relationship from A to B, the foreign key is usually placed in:",
-        options: ["Relation A", "Relation B", "Both", "A separate relation"],
-        ans: "b) Relation B"
-    },
-    {
-        q: "For a many-to-many relationship, we need:",
-        options: ["A separate relation", "Foreign key in one of the entities", "No additional relation", "Primary key only"],
-        ans: "a) A separate relation"
-    },
-    {
-        q: "Which of the following is true about weak entities?",
-        options: ["They have their own primary key", "They depend on a strong entity for identification", "They cannot have attributes", "They are always total participants"],
-        ans: "b) They depend on a strong entity for identification"
-    },
-    {
-        q: "The discriminating attribute of a weak entity is also called:",
-        options: ["Partial key", "Primary key", "Foreign key", "Candidate key"],
-        ans: "a) Partial key"
-    },
-    {
-        q: "In SQL, the INTERSECT operator returns:",
-        options: ["Common tuples of two relations", "All tuples of two relations", "Tuples in first but not second", "Cartesian product"],
-        ans: "a) Common tuples of two relations"
-    },
-    {
-        q: "The EXCEPT (or MINUS) operator returns:",
-        options: ["Tuples in first relation but not in second", "Common tuples", "All tuples", "None"],
-        ans: "a) Tuples in first relation but not in second"
-    },
-    {
-        q: "Which join returns all rows from the left table and matching rows from the right?",
-        options: ["INNER JOIN", "LEFT OUTER JOIN", "RIGHT OUTER JOIN", "FULL OUTER JOIN"],
-        ans: "b) LEFT OUTER JOIN"
-    },
-    {
-        q: "A FULL OUTER JOIN returns:",
-        options: ["Only matching rows", "All rows from both tables", "Only left table rows", "Only right table rows"],
-        ans: "b) All rows from both tables"
-    },
-    {
-        q: "In nested queries, a correlated subquery:",
-        options: ["Depends on the outer query", "Is independent of the outer query", "Is executed only once", "Cannot use aggregate functions"],
-        ans: "a) Depends on the outer query"
-    },
-    {
-        q: "The EXISTS operator returns true if:",
-        options: ["The subquery returns at least one row", "The subquery returns no rows", "The subquery returns NULL", "Always false"],
-        ans: "a) The subquery returns at least one row"
-    },
-    {
-        q: "Which of the following is used for granting privileges in SQL?",
-        options: ["GRANT", "REVOKE", "Both", "None"],
-        ans: "c) Both"
-    },
-    {
-        q: "The privilege to create a table is:",
-        options: ["CREATE", "INSERT", "SELECT", "UPDATE"],
-        ans: "a) CREATE"
-    },
-    {
-        q: "In concurrency control, a dirty read occurs when:",
-        options: ["A transaction reads a value written by an uncommitted transaction", "A transaction reads the same value twice", "Two transactions write the same value", "None"],
-        ans: "a) A transaction reads a value written by an uncommitted transaction"
-    },
-    {
-        q: "A non-repeatable read occurs when:",
-        options: ["A transaction reads the same data twice and gets different values", "A transaction reads uncommitted data", "A phantom appears", "None"],
-        ans: "a) A transaction reads the same data twice and gets different values"
-    },
-    {
-        q: "Phantom read problem is related to:",
-        options: ["Insertion or deletion of rows that affect a query result", "Dirty reads", "Non-repeatable reads only", "None"],
-        ans: "a) Insertion or deletion of rows that affect a query result"
-    },
-    {
-        q: "The isolation level that prevents dirty reads but allows non-repeatable and phantom reads is:",
-        options: ["Read Uncommitted", "Read Committed", "Repeatable Read", "Serializable"],
-        ans: "b) Read Committed"
-    },
-    {
-        q: "The highest isolation level is:",
-        options: ["Read Uncommitted", "Read Committed", "Repeatable Read", "Serializable"],
-        ans: "d) Serializable"
-    },
-    {
-        q: "In query processing, the first step is usually:",
-        options: ["Parsing and translation", "Optimization", "Evaluation", "Execution"],
-        ans: "a) Parsing and translation"
-    },
-    {
-        q: "A query evaluation plan is:",
-        options: ["A sequence of operations to evaluate the query", "The SQL query itself", "The result of the query", "None"],
-        ans: "a) A sequence of operations to evaluate the query"
-    },
-    {
-        q: "Materialization in query evaluation means:",
-        options: ["Storing intermediate results on disk", "Pipelining results", "Both", "None"],
-        ans: "a) Storing intermediate results on disk"
-    },
-    {
-        q: "Pipelining in query evaluation means:",
-        options: ["Passing results of one operation directly to the next", "Storing all intermediate results", "Using only indexes", "None"],
-        ans: "a) Passing results of one operation directly to the next"
-    },
-    {
-        q: "Which index is most suitable for range queries?",
-        options: ["Hash index", "B+ tree index", "Bitmap index", "None"],
-        ans: "b) B+ tree index"
-    },
-    {
-        q: "Hash indexes are good for:",
-        options: ["Equality searches", "Range searches", "Both", "Neither"],
-        ans: "a) Equality searches"
-    },
-    {
-        q: "In a dense index, there is an index entry for:",
-        options: ["Every search key value", "Only some search key values", "Only the first record of each block", "None"],
-        ans: "a) Every search key value"
-    },
-    {
-        q: "In a sparse index, there is an index entry for:",
-        options: ["Every search key value", "Only some search key values (usually one per block)", "Every record", "None"],
-        ans: "b) Only some search key values (usually one per block)"
-    },
-    {
-        q: "A primary index is built on:",
-        options: ["The primary key (or ordered search key)", "Any non-key attribute", "Multiple attributes only", "None"],
-        ans: "a) The primary key (or ordered search key)"
-    },
-    {
-        q: "The blocking factor of a file is:",
-        options: ["Number of records that can fit in a block", "Number of blocks in the file", "Size of a record", "None"],
-        ans: "a) Number of records that can fit in a block"
-    },
-    {
-        q: "Spanned organization of records means:",
-        options: ["A record can span multiple blocks", "A record must fit in one block", "Records are of fixed length", "None"],
-        ans: "a) A record can span multiple blocks"
-    },
-    {
-        q: "Unspanned organization means:",
-        options: ["A record must completely fit in one block", "A record can span blocks", "Variable length records only", "None"],
-        ans: "a) A record must completely fit in one block"
-    },
-    {
-        q: "RAID level 0 provides:",
-        options: ["Striping without redundancy", "Mirroring", "Parity", "Both striping and parity"],
-        ans: "a) Striping without redundancy"
-    },
-    {
-        q: "RAID level 1 provides:",
-        options: ["Mirroring", "Striping", "Parity", "None"],
-        ans: "a) Mirroring"
-    },
-    {
-        q: "Which RAID level provides both striping and parity?",
-        options: ["RAID 0", "RAID 1", "RAID 5", "RAID 10"],
-        ans: "c) RAID 5"
-    },
-    {
-        q: "The main disadvantage of RAID 0 is:",
-        options: ["No fault tolerance", "Low performance", "High cost", "None"],
-        ans: "a) No fault tolerance"
-    },
-    {
-        q: "In database recovery, the log is used to:",
-        options: ["Record all changes made by transactions", "Store the database", "Optimize queries", "None"],
-        ans: "a) Record all changes made by transactions"
-    },
-    {
-        q: "A transaction is said to be committed when:",
-        options: ["Its commit log record is written to stable storage", "It finishes execution", "It acquires all locks", "None"],
-        ans: "a) Its commit log record is written to stable storage"
-    }
-];
-
-const container = document.getElementById('questions');
-
-questions.forEach((item, index) => {
-    const div = document.createElement('div');
-    div.className = 'question';
-    div.innerHTML = `
-        <span class="q-num">${index + 1}</span>
-        <span class="q-text">${item.q}</span>
-        <div class="options">
-            ${item.options.map((opt, i) => `
-                <div class="option">${String.fromCharCode(97 + i)}) ${opt}</div>
-            `).join('')}
-        </div>
-        <div class="answer" id="ans-${index}">
-            <strong>Answer:</strong> ${item.ans}
-        </div>
-        <button style="margin: 10px 0 0 44px; padding: 6px 14px; font-size: 0.85rem;" 
-                onclick="toggleAnswer(${index})">Show Answer</button>
-    `;
-    container.appendChild(div);
-});
-
-function toggleAnswer(index) {
-    const ans = document.getElementById(`ans-${index}`);
-    ans.classList.toggle('show');
-}
-
-function showAllAnswers() {
-    document.querySelectorAll('.answer').forEach(el => el.classList.add('show'));
-}
-
-function hideAllAnswers() {
-    document.querySelectorAll('.answer').forEach(el => el.classList.remove('show'));
-}
-</script>
+    <!-- Main Logic Script -->
+    <script src="script.js" defer></script>
 </body>
+
 </html>
